@@ -33,6 +33,10 @@ task :install => [:submodule_init, :submodules] do
 
   run_bundle_config
 
+  install_rubies
+
+  install_gems
+
   success_msg("installed")
 end
 
@@ -172,10 +176,41 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi}
+  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi chruby ruby-build watch awscli}
   run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
   puts
   puts
+end
+
+def install_rubies
+  puts "======================================================"
+  puts "Installing rubies."
+  puts "======================================================"
+	ruby_versions.each do |version|
+		next if ruby_installed?(version)
+		run %{ruby-build #{version} ~/.rubies/ruby-#{version}}
+	end
+end
+
+def ruby_installed?(version)
+	File.exist?("#{ENV["HOME"]}/.rubies/ruby-#{version}")
+end
+
+def install_gems
+  puts "======================================================"
+  puts "Installing gems."
+  puts "======================================================"
+		ruby_versions.each do |version|
+			run %{chruby-exec #{version} -- gem install #{gems.join(" ")}}
+		end
+end
+
+def ruby_versions
+  %w{2.3.1 2.3.4}
+end
+
+def gems
+	%w{gpgenv ion-client pry bundler}
 end
 
 def install_fonts

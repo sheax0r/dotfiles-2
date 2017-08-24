@@ -125,3 +125,7 @@
   enabled = true
 [include]
   path = .gitconfig.user
+[github]
+	user = sheax0r
+[ghi]
+	token = !security find-internet-password -a sheax0r -s github.com -l 'ghi token' -w

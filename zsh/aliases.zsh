@@ -211,3 +211,11 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'
+
+# Custom aliases
+alias ic='ion-client'
+alias watch='watch '
+alias be='bundle exec'
+alias gbe='gpgenv bundle exec'
+alias brake='bundle exec rake'
+alias ar='source $yadr/zsh/aliases.zsh; source $HOME/.dotfiles/.zsh.after/alias.zsh'
