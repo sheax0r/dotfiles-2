@@ -33,9 +33,9 @@ task :install => [:submodule_init, :submodules] do
 
   run_bundle_config
 
-  install_rubies
+  Rake::Task["install_rubies"].execute
 
-  install_gems
+  Rake::Task["install_gems"].execute
 
   success_msg("installed")
 end
@@ -182,7 +182,8 @@ def install_homebrew
   puts
 end
 
-def install_rubies
+desc "Install rubies"
+task :install_rubies do
   puts "======================================================"
   puts "Installing rubies."
   puts "======================================================"
@@ -196,7 +197,8 @@ def ruby_installed?(version)
 	File.exist?("#{ENV["HOME"]}/.rubies/ruby-#{version}")
 end
 
-def install_gems
+desc "Install gems"
+task :install_gems do
   puts "======================================================"
   puts "Installing gems."
   puts "======================================================"
@@ -206,7 +208,7 @@ def install_gems
 end
 
 def ruby_versions
-  %w{2.3.1 2.3.4}
+  %w{2.3.1 2.3.4 2.2.3}
 end
 
 def gems
