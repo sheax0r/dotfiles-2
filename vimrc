@@ -116,3 +116,10 @@ set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+
+let g:yadr_disable_solarized_enhancements = 1
+if !has("gui_running")
+  let g:solarized_termtrans=1
+endif
+set background=light
+colorscheme solarized
