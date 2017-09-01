@@ -10,7 +10,7 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts
 
-  install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
+  Rake::Task["install_homebrew"].execute if RUBY_PLATFORM.downcase.include?("darwin")
   install_rvm_binstubs
 
   # this has all the runcoms from this directory.
@@ -155,7 +155,8 @@ def install_rvm_binstubs
   puts
 end
 
-def install_homebrew
+desc "Install homebrew and brews to go with it"
+task :install_homebrew do
   run %{which brew}
   unless $?.success?
     puts "======================================================"
@@ -173,11 +174,18 @@ def install_homebrew
   run %{brew update}
   puts
   puts
+
+  Rake::Task["install_homebrew_packages"].execute
+end
+
+desc "Install homebrew packages"
+task :install_homebrew_packages do
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi chruby ruby-build watch awscli}
+  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi chruby ruby-build watch awscli postgresql gpg-agent pwgen}
   run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
+  run %{brew cask install gitify}
   puts
   puts
 end
