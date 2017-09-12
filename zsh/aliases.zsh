@@ -220,4 +220,5 @@ alias gbe='gpgenv bundle exec'
 alias brake='bundle exec rake'
 alias h='heroku'
 alias inuke='ic instances:nuke --confirm $ION_HOST'
+alias flip='echo "(╯°□°）╯︵ ┻━┻" | pbcopy'
 
