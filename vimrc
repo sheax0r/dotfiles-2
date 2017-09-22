@@ -118,6 +118,11 @@ set smartcase       " ...unless we type a capital
 so ~/.yadr/vim/settings.vim
 
 let g:yadr_disable_solarized_enhancements = 1
-set background=light
 colorscheme solarized
+
+set background=light
 set linespace=4
+set lazyredraw
+set ttyfast
+set nocursorline
+
