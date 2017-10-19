@@ -52,13 +52,6 @@ alias ae='vim $yadr/zsh/aliases.zsh' #alias edit
 alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 alias gar="killall -HUP -u \"$USER\" zsh"  #global alias reload
 
-# vim using
-mvim --version > /dev/null 2>&1
-MACVIM_INSTALLED=$?
-if [ $MACVIM_INSTALLED -eq 0 ]; then
-  alias vim="mvim -v"
-fi
-
 # mimic vim functions
 alias :q='exit'
 
@@ -220,5 +213,7 @@ alias gbe='gpgenv bundle exec'
 alias brake='bundle exec rake'
 alias h='heroku'
 alias inuke='ic instances:nuke --confirm $ION_HOST'
+alias ilaunch='ic instances:launch --confirm $ION_HOST -a'
 alias flip='echo "(╯°□°）╯︵ ┻━┻" | pbcopy'
+alias passgen='openssl rand -base64 32'
 

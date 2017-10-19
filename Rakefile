@@ -183,8 +183,8 @@ task :install_homebrew_packages do
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi chruby ruby-build watch awscli postgresql gpg-agent pwgen fzf cowsay}
-  run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
+  run %{brew phantomjs install luajit python3 zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi chruby ruby-build watch awscli postgresql gpg-agent pwgen fzf cowsay}
+  run %{brew install vim --with-luajit}
   run %{brew cask install gitify}
   puts
   puts
@@ -216,7 +216,7 @@ task :install_gems do
 end
 
 def ruby_versions
-  %w{2.3.1 2.3.4 2.2.3}
+  %w{2.3.4 2.2.8}
 end
 
 def gems
