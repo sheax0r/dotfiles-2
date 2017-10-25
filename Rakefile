@@ -216,7 +216,7 @@ task :install_gems do
 end
 
 def ruby_versions
-  %w{2.3.4 2.2.8}
+  %w{2.3.5 2.2.8}
 end
 
 def gems
