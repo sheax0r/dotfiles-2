@@ -17,3 +17,4 @@ endfor
 " Show line numbers
 set relativenumber
 set number
+

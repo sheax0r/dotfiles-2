@@ -185,7 +185,7 @@ task :install_homebrew_packages do
   puts "======================================================"
   run %{brew phantomjs install luajit python3 zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi chruby ruby-build watch awscli postgresql gpg-agent pwgen fzf cowsay}
   run %{brew install vim --with-luajit}
-  run %{brew cask install gitify}
+  run %{brew cask install gitify go}
   puts
   puts
 end
@@ -216,7 +216,7 @@ task :install_gems do
 end
 
 def ruby_versions
-  %w{2.3.5 2.2.8}
+  %w{2.4.2 2.4.3 2.3.5 2.2.8}
 end
 
 def gems
