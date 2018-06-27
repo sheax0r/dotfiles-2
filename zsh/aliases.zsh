@@ -126,8 +126,7 @@ alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # Common shell functions
 alias less='less -r'
-alias l='less'
-alias lh='ls -alt | head' # see the last modified files
+alias l='less' alias lh='ls -alt | head' # see the last modified files
 alias screen='TERM=screen screen'
 alias cl='clear'
 
@@ -219,3 +218,4 @@ alias 'ion-staging'='heroku run:inside -a ion-ops-staging web.1 console'
 alias 'ion-prod'='heroku run:inside -a ion-ops-private web.1 console'
 alias tf=terraform
 alias gcurl='curl -H "$(oauth2l header cloud-platform)" -H "Content-Type: application/json" '
+alias gtags='cd $HGO; find . -name "*.go" | xargs gotags > tags'

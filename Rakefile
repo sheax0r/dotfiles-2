@@ -25,6 +25,8 @@ task :install => [:submodule_init, :submodules] do
     Rake::Task["install_vundle"].execute
   end
 
+  Rake::Task["default_gems"].execute
+
   Rake::Task["install_prezto"].execute
 
   install_fonts
@@ -38,6 +40,10 @@ task :install => [:submodule_init, :submodules] do
   Rake::Task["install_gems"].execute
 
   success_msg("installed")
+end
+
+task :default_gems do
+  run %{ ln -nfs "$HOME/.yadr/defaults/default-ruby-gems" "${ZDOTDIR:-$HOME}/.default-ruby-gems" }
 end
 
 task :install_prezto do
@@ -186,6 +192,7 @@ task :install_homebrew_packages do
   run %{brew phantomjs install luajit python3 zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi chruby ruby-build watch awscli postgresql gpg-agent pwgen fzf cowsay}
   run %{brew install vim --with-luajit}
   run %{brew cask install gitify go}
+  run %W{brew install https://raw.github.com/bronson/chruby-default-gems/master/homebrew/chruby-default-gems.rb --HEAD}
   puts
   puts
 end
@@ -217,10 +224,6 @@ end
 
 def ruby_versions
   %w{2.4.2 2.4.3 2.3.5 2.2.8}
-end
-
-def gems
-	%w{gpgenv ion-client pry bundler}
 end
 
 def install_fonts
